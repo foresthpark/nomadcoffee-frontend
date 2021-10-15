@@ -42,7 +42,9 @@ export default function Home() {
                     <Avatar lg url={shop.user.avatarURL} />
                   </Link> */}
                   <Link href={`/users/${shop.user.username}`}>
-                    <Username>{shop.user.username}</Username>
+                    <a>
+                      <Username>{shop.user.username}</Username>
+                    </a>
                   </Link>
                 </div>
                 <div>

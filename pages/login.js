@@ -132,7 +132,7 @@ export default function Login() {
           </FacebookLogin>
         </TopBox>
         <BottomBox>
-          <span>Don't have an account?</span>{" "}
+          <span>{`Don't have an account?`}</span>{" "}
           <Link href="/signup">
             <a>Sign up</a>
           </Link>
