@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const SEE_COFFEESHOPS = gql`
-  mutation seeCoffeeShops(
+  query seeCoffeeShops(
     $lastId: Int # $photos: [String]
   ) {
     seeCoffeeShops(lastId: $lastId) {

@@ -23,7 +23,9 @@ import PageTitle from "../components/PageTitle";
 
 export default function Home() {
   const { data, loading } = useQuery(SEE_COFFEESHOPS, {
-    lastId: 0,
+    variables: {
+      lastId: 0,
+    },
   });
 
   if (loading) return <div>Loading...</div>;

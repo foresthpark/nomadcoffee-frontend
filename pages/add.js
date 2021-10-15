@@ -7,6 +7,8 @@ import Input from "../components/auth/Input";
 import PageTitle from "../components/PageTitle";
 import FormError from "../components/auth/FormError";
 import Button from "../components/auth/Button";
+import { useMutation } from "@apollo/client";
+import { CREATE_COFFEESHOP } from "../api/createCoffeeShop";
 
 export default function AddCoffeeShop() {
   const router = useRouter();
@@ -15,6 +17,7 @@ export default function AddCoffeeShop() {
     register,
     handleSubmit,
     formState: { errors },
+    formState,
   } = useForm({
     mode: "onChange",
   });
@@ -31,29 +34,29 @@ export default function AddCoffeeShop() {
   };
 
   const [createCoffeeShopMutation, { loading }] = useMutation(
-    CREATE_COFFEE_SHOP_MUTATION,
+    CREATE_COFFEESHOP,
     { onCompleted }
   );
 
-  const [preview, setPreview] = useState(null);
-  const isUploaded = useReactiveVar(uploadVar);
+  // const [preview, setPreview] = useState(null);
+  // const isUploaded = useReactiveVar(uploadVar);
 
   let photoFile;
 
-  const onPhotoChange = (e) => {
-    const {
-      target: {
-        files: [file],
-      },
-    } = e;
-    photoFile = file;
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setPreview(reader.result);
-      uploadVar(true);
-    };
-  };
+  // const onPhotoChange = (e) => {
+  //   const {
+  //     target: {
+  //       files: [file],
+  //     },
+  //   } = e;
+  //   photoFile = file;
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => {
+  //     setPreview(reader.result);
+  //     uploadVar(true);
+  //   };
+  // };
 
   const onSubmitValid = (data) => {
     if (loading) {
@@ -77,7 +80,7 @@ export default function AddCoffeeShop() {
       <FormBox>
         <form onSubmit={handleSubmit(onSubmitValid)}>
           <Input
-            ref={register({
+            {...register("name", {
               required: "name is required",
             })}
             name="name"
@@ -86,7 +89,7 @@ export default function AddCoffeeShop() {
           />
           <FormError message={errors?.name?.message} />
           <Input
-            ref={register({
+            {...register("latitude", {
               required: "Latitude is required",
             })}
             name="latitude"
@@ -95,7 +98,7 @@ export default function AddCoffeeShop() {
           />
           <FormError message={errors?.latitude?.message} />
           <Input
-            ref={register({
+            {...register("longitude", {
               required: "Longitude is required",
             })}
             name="longitude"
@@ -104,20 +107,20 @@ export default function AddCoffeeShop() {
           />
           <FormError message={errors?.longitude?.message} />
           <Input
-            ref={register}
+            {...register}
             name="category"
             type="text"
             placeholder="Category"
           />
           <FormError message={errors?.category?.message} />
-          <Input
-            ref={register}
+          {/* <Input
+            {...register}
             type="file"
             name="photos"
             onChange={onPhotoChange}
             multiple
             accept="image/*"
-          />
+          /> */}
           {/* {isUploaded ? <Img src={preview} alt="preview" /> : null} */}
           <Button
             type="submit"
