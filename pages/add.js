@@ -103,7 +103,6 @@ export default function AddCoffeeShop() {
             placeholder="Longitude"
           />
           <FormError message={errors?.longitude?.message} />
-
           <Input
             ref={register}
             name="category"
@@ -119,7 +118,7 @@ export default function AddCoffeeShop() {
             multiple
             accept="image/*"
           />
-          {isUploaded ? <Img src={preview} alt="preview" /> : null}
+          {/* {isUploaded ? <Img src={preview} alt="preview" /> : null} */}
           <Button
             type="submit"
             value={loading ? "loading..." : "Create Shop"}

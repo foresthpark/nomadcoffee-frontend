@@ -33,7 +33,7 @@ export default function Home() {
       <PageTitle title={"Nomad Coffee"} />
       {data?.seeCoffeeShops?.map((shop) => (
         <ShopContainer key={shop.id}>
-          <PhotoFile src={shop.photos[0]?.url} />
+          {/* <PhotoFile src={shop.photos[0]?.url} /> */}
           <ShopData>
             <div>
               <ShopHeader>
